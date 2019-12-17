@@ -1,5 +1,6 @@
 const express = require("express")
 const booksRouter = require("./src/books")
+const commentsRouter = require("./src/comments")
 const cors = require("cors")
 require('dotenv').config()
 
@@ -18,15 +19,16 @@ var corsOptions = {
 }
 
 // this allows HEROKU (or whatever else cloud system) to select the PORT that is free for him
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3002
 
-console.log(process.env.USER)
-console.log(process.env.FE_URL)
+/* console.log(process.env.USER)
+console.log(process.env.FE_URL) */
 
 //server.use()
 server.use(express.json())
 
 server.use("/books", cors(corsOptions), booksRouter)
+server.use("/comments", commentsRouter)
 server.get("/test", (req, res) => {
     res.send("working!!!")
 })
