@@ -46,4 +46,21 @@ router.put("/:id", async (req, res) => {
     console.log(await readComments())
 })
 
+router.delete("/:id", async (req, res) => {
+    const comments = await readComments()
+
+    const commentRemaining = comments.filter(c => c._id !== req.params.id)
+
+    if (commentRemaining.length === comments.length) {
+        res.send("Comment Not Found")
+    } else {
+        await fs.writeFile(commentPath, JSON.stringify(commentRemaining))
+        res.send("deleted successfully")
+    }
+
+
+    console.log(await readComments())
+})
+
+
 module.exports = router;
