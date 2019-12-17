@@ -7,7 +7,7 @@ require('dotenv').config()
 const server = express();
 
 var whitelist = ['http://localhost:3000', 'http://localhost:3001', 
-                 'http://m5-d7-oct19-fe.herokuapp.com', 'https://m5-d7-oct19-fe.herokuapp.com', process.env.FE_URL]
+                 'http://m5-d7-oct19-fe.herokuapp.com', 'https://vennbook.herokuapp.com/', 'http://vennbook.herokuapp.com/', 'https://m5-d7-oct19-fe.herokuapp.com', process.env.FE_URL]
 var corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
